@@ -1,0 +1,31 @@
+php_flag session.auto_start on
+php_flag output_buffering on
+Options +FollowSymLinks
+RewriteEngine on
+RewriteRule ^read/([0-9]+) read.php?id=$1 [L]
+RewriteRule ^announcement/([0-9]+) announcement.php?id=$1 [L]
+RewriteRule ^login login.php [L]
+RewriteRule ^tambahch$ addchapter.php [L]
+RewriteRule ^user/([0-9]+) user.php?iduser=$1 [L]
+RewriteRule ^s$ search.php [L]
+RewriteRule ^p$ pesan.php [L]
+RewriteRule ^register$ register.php [L]
+RewriteRule ^tambahnv$ addnovel.php [L]
+RewriteRule ^ubahnv/([0-9]+) ednovel.php?idnov=$1 [L]
+RewriteRule ^ubahch/([0-9]+) edchapter.php?id=$1 [L]
+RewriteRule ^editprofile$ editprofile.php [L]
+RewriteRule ^aa$ addpengumuman.php [L]
+RewriteRule ^tentang$ about.php [L]
+RewriteRule ^author$ penulis.php [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^novel/([0-9]+)-(.*)-(.*)$ novel.php?idnov=$1&cat=$2&p=$3 [L,QSA]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^novel/([0-9]+)-(.*)$ novel.php?idnov=$1&cat=$2 [L,QSA] 
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^novel/([0-9]+)$ novel.php?idnov=$1 [L,QSA]
